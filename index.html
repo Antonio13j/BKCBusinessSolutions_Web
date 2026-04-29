@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BKC Business Solutions - The Future of Contact</title>
+  <meta name="description" content="BKC Business Solutions - Empresa de servicios de Contact Center y gestión de clientes." />
+  <style>
+    :root{
+      --bg:#f7fafc;
+      --card:#ffffff;
+      --accent:#0ea5a4;
+      --text:#1e293b;
+      --muted:#64748b;
+      --border:#e2e8f0;
+      --radius:12px;
+      --gap:18px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0}
+    html,body{background:var(--bg); color:var(--text); line-height:1.6}
+
+    /* HEADER */
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 32px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.05);
+      position:sticky;top:0;z-index:10;
+    }
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo .mark{
+      width:44px;height:44px;border-radius:10px;
+      background:linear-gradient(135deg,#0ea5a4,#06b6d4);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;
+    }
+    nav{display:flex;gap:16px;align-items:center}
+    a{color:var(--text);text-decoration:none;font-weight:500}
+    a:hover{color:var(--accent)}
+    .btn{
+      background:var(--accent);color:white;padding:10px 16px;
+      border-radius:10px;font-weight:600;transition:0.2s;
+    }
+    .btn:hover{opacity:0.85}
+
+    /* HERO */
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;
+      padding:64px 32px;
+      background:linear-gradient(180deg,#fdfdfd,#f5f9fa);
+    }
+    .hero h1{font-size:40px;margin-bottom:16px;line-height:1.2}
+    .hero p{color:var(--muted);font-size:18px;margin-bottom:24px}
+    .card{
+      background:var(--card);
+      padding:28px;
+      border-radius:var(--radius);
+      box-shadow:0 6px 20px rgba(0,0,0,0.05);
+      border:1px solid var(--border);
+    }
+
+    /* SERVICES */
+    .services{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+      padding:0 32px 64px;
+    }
+    .service{
+      padding:24px;border-radius:var(--radius);
+      background:var(--card);box-shadow:0 4px 14px rgba(0,0,0,0.04);
+      border:1px solid var(--border);
+      transition:transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .service:hover{
+      transform:translateY(-4px);
+      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    }
+    .service h3{margin-bottom:8px;color:var(--accent)}
+    .muted{color:var(--muted)}
+
+    /* ABOUT + CONTACT */
+    .grid-2{
+      display:grid;grid-template-columns:1fr 1fr;gap:32px;
+      padding:0 32px 64px;
+    }
+
+    /* FORM */
+    input,textarea{
+      width:100%;padding:12px;border-radius:8px;
+      border:1px solid var(--border);color:var(--text);
+      font-size:15px;background:#fff;
+    }
+    input:focus,textarea:focus{outline:1px solid var(--accent)}
+
+    /* FOOTER */
+    footer{
+      padding:24px 32px;border-top:1px solid var(--border);
+      color:var(--muted);display:flex;justify-content:space-between;align-items:center;
+      font-size:14px;background:#fff;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .grid-2{grid-template-columns:1fr}
+      nav{display:none}
+    }
+    @media(max-width:600px){
+      .services{grid-template-columns:1fr}
+      .hero h1{font-size:32px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="mark">B</div>
+      <div>
+        <div style="font-weight:700">BKC Business Solutions</div>
+        <div class="small muted">The Future of Contact</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#services">Servicios</a>
+      <a href="#about">Nosotros</a>
+      <a href="#contact">Contacto</a>
+      <a class="btn" href="#contact">Contáctanos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="card">
+          <h1>Conectamos personas, impulsamos resultados</h1>
+          <p>En <strong>BKC Business Solutions</strong> somos expertos en Contact Center, cobranzas, ventas y atención al cliente, ofreciendo soluciones personalizadas para tu empresa.</p>
+          <div style="display:flex;gap:12px;">
+            <a class="btn" href="#contact">Solicitar información</a>
+            <a class="btn" style="background:transparent;border:1px solid var(--accent);color:var(--accent)" href="#about">Conócenos</a>
+          </div>
+        </div>
+      </div>
+      <aside>
+        <div class="card">
+          <h3>Por qué elegirnos</h3>
+          <ul class="muted" style="padding-left:20px;">
+            <li>Equipo altamente capacitado</li>
+            <li>Infraestructura moderna y segura</li>
+            <li>Foco en resultados y satisfacción del cliente</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section class="services" id="services">
+      <div class="service">
+        <h3>Gestión de Cobranzas</h3>
+        <p class="muted">Estrategias efectivas de recuperación para carteras castigadas o vigentes.</p>
+      </div>
+      <div class="service">
+        <h3>Atención al Cliente</h3>
+        <p class="muted">Canales omnicanal que garantizan la mejor experiencia en cada contacto.</p>
+      </div>
+      <div class="service">
+        <h3>Televentas y Retención</h3>
+        <p class="muted">Incrementa tus ingresos y fideliza clientes con nuestros equipos comerciales.</p>
+      </div>
+    </section>
+
+    <section class="grid-2" id="about">
+      <div class="card">
+        <h2>Sobre Nosotros</h2>
+        <p class="muted">BKC Business Solutions es una empresa peruana especializada en servicios de Contact Center. Ofrecemos soluciones integrales para optimizar la comunicación, incrementar la productividad y fortalecer el vínculo con tus clientes.</p>
+        <p class="muted">Nos enfocamos en la innovación y la calidad, adaptando nuestros procesos a las necesidades de cada sector.</p>
+      </div>
+
+      <div class="card" id="contact">
+        <h2>Contáctanos</h2>
+        <p class="muted">Déjanos tus datos y uno de nuestros asesores se comunicará contigo.</p>
+        <form onsubmit="event.preventDefault();submitForm()">
+          <div style="margin-bottom:8px"><input id="name" placeholder="Nombre" required></div>
+          <div style="margin-bottom:8px"><input id="email" placeholder="Correo" type="email" required></div>
+          <div style="margin-bottom:8px"><textarea id="msg" rows="4" placeholder="Mensaje"></textarea></div>
+          <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" type="submit">Enviar</button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© <span id="year"></span> BKC Business Solutions</div>
+    <div class="muted small">The Future of Contact</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function submitForm(){
+      const data = {
+        name:document.getElementById('name').value,
+        email:document.getElementById('email').value,
+        msg:document.getElementById('msg').value
+      };
+      console.log('Formulario enviado (simulado):', data);
+      alert('Gracias por contactarnos. Pronto nos comunicaremos contigo.');
+    }
+  </script>
+</body>
+</html>
