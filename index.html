@@ -1,207 +1,1026 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BKC Business Solutions - Business Key Core</title>
-  <meta name="description" content="BKC Business Solutions - Empresa de servicios de Contact Center y gestión de clientes." />
-  <style>
-    :root{
-      --bg:#f7fafc;
-      --card:#ffffff;
-      --accent:#0ea5a4;
-      --text:#1e293b;
-      --muted:#64748b;
-      --border:#e2e8f0;
-      --radius:12px;
-      --gap:18px;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BKC Business Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal:    #0d9488;
+  --teal-d:  #0f766e;
+  --teal-l:  #ccfbf1;
+  --navy:    #0f172a;
+  --navy-m:  #1e293b;
+  --slate:   #475569;
+  --muted:   #94a3b8;
+  --border:  #e2e8f0;
+  --bg:      #f8fafc;
+  --white:   #ffffff;
+  --radius:  14px;
+  --radius-sm: 8px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
 
-    *{box-sizing:border-box; margin:0; padding:0}
-    html,body{background:var(--bg); color:var(--text); line-height:1.6}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* HEADER */
-    header{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:18px 32px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.05);
-      position:sticky;top:0;z-index:10;
-    }
-    .logo{display:flex;gap:12px;align-items:center}
-    .logo .mark{
-      width:44px;height:44px;border-radius:10px;
-      background:linear-gradient(135deg,#0ea5a4,#06b6d4);
-      display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;
-    }
-    nav{display:flex;gap:16px;align-items:center}
-    a{color:var(--text);text-decoration:none;font-weight:500}
-    a:hover{color:var(--accent)}
-    .btn{
-      background:var(--accent);color:white;padding:10px 16px;
-      border-radius:10px;font-weight:600;transition:0.2s;
-    }
-    .btn:hover{opacity:0.85}
+body { background: var(--bg); color: var(--navy); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-    /* HERO */
-    .hero{
-      display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;
-      padding:64px 32px;
-      background:linear-gradient(180deg,#fdfdfd,#f5f9fa);
-    }
-    .hero h1{font-size:40px;margin-bottom:16px;line-height:1.2}
-    .hero p{color:var(--muted);font-size:18px;margin-bottom:24px}
-    .card{
-      background:var(--card);
-      padding:28px;
-      border-radius:var(--radius);
-      box-shadow:0 6px 20px rgba(0,0,0,0.05);
-      border:1px solid var(--border);
-    }
+/* ─── HEADER ─────────────────────────────────── */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
 
-    /* SERVICES */
-    .services{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
-      padding:0 32px 64px;
-    }
-    .service{
-      padding:24px;border-radius:var(--radius);
-      background:var(--card);box-shadow:0 4px 14px rgba(0,0,0,0.04);
-      border:1px solid var(--border);
-      transition:transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .service:hover{
-      transform:translateY(-4px);
-      box-shadow:0 6px 20px rgba(0,0,0,0.08);
-    }
-    .service h3{margin-bottom:8px;color:var(--accent)}
-    .muted{color:var(--muted)}
+.logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+.logo-mark {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 600; font-size: 16px; letter-spacing: -0.5px;
+}
+.logo-name { font-weight: 600; font-size: 15px; color: var(--navy); }
 
-    /* ABOUT + CONTACT */
-    .grid-2{
-      display:grid;grid-template-columns:1fr 1fr;gap:32px;
-      padding:0 32px 64px;
-    }
+nav { display: flex; align-items: center; gap: 32px; }
+nav a { text-decoration: none; color: var(--slate); font-size: 14px; font-weight: 500; transition: color .15s; }
+nav a:hover { color: var(--teal); }
 
-    /* FORM */
-    input,textarea{
-      width:100%;padding:12px;border-radius:8px;
-      border:1px solid var(--border);color:var(--text);
-      font-size:15px;background:#fff;
-    }
-    input:focus,textarea:focus{outline:1px solid var(--accent)}
+.btn-primary {
+  background: var(--teal);
+  color: #fff;
+  padding: 9px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .15s, transform .1s;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--teal-d); transform: translateY(-1px); }
 
-    /* FOOTER */
-    footer{
-      padding:24px 32px;border-top:1px solid var(--border);
-      color:var(--muted);display:flex;justify-content:space-between;align-items:center;
-      font-size:14px;background:#fff;
-    }
+/* HAMBURGER */
+.ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; border: none; background: none; }
+.ham span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .25s; }
 
-    /* RESPONSIVE */
-    @media(max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .services{grid-template-columns:repeat(2,1fr)}
-      .grid-2{grid-template-columns:1fr}
-      nav{display:none}
-    }
-    @media(max-width:600px){
-      .services{grid-template-columns:1fr}
-      .hero h1{font-size:32px}
-    }
-  </style>
+/* MOBILE NAV */
+.mobile-nav {
+  display: none;
+  position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px 28px;
+  flex-direction: column; gap: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.mobile-nav a { font-size: 16px; font-weight: 500; color: var(--navy); text-decoration: none; }
+.mobile-nav.open { display: flex; }
+
+/* ─── HERO ───────────────────────────────────── */
+.hero {
+  padding: 100px 40px 80px;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal-l);
+  color: var(--teal-d);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 99px;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+.hero-badge::before {
+  content: '';
+  width: 7px; height: 7px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 52px;
+  line-height: 1.1;
+  color: var(--navy);
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--teal);
+}
+
+.hero p {
+  font-size: 17px;
+  color: var(--slate);
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+.btn-secondary {
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-secondary svg { transition: transform .2s; }
+.btn-secondary:hover svg { transform: translateX(3px); }
+
+/* HERO METRICS CARD */
+.hero-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+}
+
+.hero-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.metric-row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.metric-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.metric-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--teal-l);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.metric-icon svg { color: var(--teal); }
+
+.metric-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.metric-desc { font-size: 13px; color: var(--slate); margin-top: 2px; }
+
+.metric-bar {
+  margin-top: 6px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.metric-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), #06b6d4);
+  border-radius: 99px;
+  animation: grow 1.2s ease forwards;
+  transform-origin: left;
+}
+@keyframes grow { from { width: 0; } }
+
+/* ─── CLIENTES ───────────────────────────────── */
+.clients {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+  padding: 32px 40px;
+}
+
+.clients-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.clients-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.clients-logos {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.client-logo {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--slate);
+  opacity: 0.6;
+  letter-spacing: -0.3px;
+  transition: opacity .2s;
+}
+.client-logo:hover { opacity: 1; }
+
+/* ─── SECTION BASE ───────────────────────────── */
+.section {
+  padding: 90px 40px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--slate);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+/* ─── SERVICIOS ──────────────────────────────── */
+#servicios { background: var(--white); padding: 90px 40px; }
+#servicios .inner { max-width: 1100px; margin: auto; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.service-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: all .25s;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), #06b6d4);
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+.service-card:hover {
+  background: var(--white);
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+  transform: translateY(-4px);
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--teal-l);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+
+.service-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+/* ─── MODELO ─────────────────────────────────── */
+#modelo { background: var(--navy); padding: 90px 40px; }
+#modelo .inner { max-width: 1100px; margin: auto; }
+#modelo .section-title { color: #fff; }
+#modelo .section-tag { color: #5eead4; }
+#modelo .section-sub { color: #94a3b8; }
+
+.modelo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2px;
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.modelo-item {
+  background: var(--navy-m);
+  padding: 28px 24px;
+  transition: background .2s;
+}
+
+.modelo-item:hover { background: #263045; }
+
+.modelo-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  margin-bottom: 14px;
+}
+
+.modelo-item h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 8px;
+}
+
+.modelo-item p {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ─── EQUIPO ─────────────────────────────────── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.team-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: box-shadow .2s, transform .2s;
+}
+
+.team-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+  transform: translateY(-3px);
+}
+
+.team-avatar {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: var(--teal-l);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.team-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.team-card p {
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+/* ─── TESTIMONIOS ────────────────────────────── */
+#testimonios { background: var(--white); padding: 90px 40px; }
+#testimonios .inner { max-width: 1100px; margin: auto; }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.testi-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.testi-quote {
+  font-size: 15px;
+  color: var(--navy-m);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.testi-quote::before { content: '"'; color: var(--teal); font-size: 24px; line-height: 0; vertical-align: -6px; margin-right: 4px; }
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.testi-initials {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.testi-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.testi-role {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ─── CONTACTO ───────────────────────────────── */
+#contacto { background: var(--bg); padding: 90px 40px; }
+#contacto .inner {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-info p {
+  font-size: 15px;
+  color: var(--slate);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.contact-icon {
+  width: 38px; height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--teal-l);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-detail span {
+  font-size: 14px;
+  color: var(--slate);
+}
+
+/* FORM */
+.contact-form {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+}
+
+.form-group { margin-bottom: 18px; }
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--navy);
+  background: var(--bg);
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(13,148,136,0.12);
+  background: #fff;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--muted); }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.btn-submit {
+  width: 100%;
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  padding: 13px;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+  margin-top: 6px;
+}
+.btn-submit:hover { background: var(--teal-d); transform: translateY(-1px); }
+.btn-submit:active { transform: translateY(0); }
+
+/* ─── FOOTER ─────────────────────────────────── */
+footer {
+  background: var(--navy);
+  padding: 48px 40px 32px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 24px;
+}
+
+.footer-brand .logo-mark { background: rgba(255,255,255,0.1); }
+.footer-brand .logo-name { color: #fff; }
+
+.footer-tagline { font-size: 13px; color: #64748b; margin-top: 10px; max-width: 220px; }
+
+.footer-links h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #64748b; text-transform: uppercase; margin-bottom: 14px; }
+.footer-links a { display: block; font-size: 13px; color: #94a3b8; text-decoration: none; margin-bottom: 8px; transition: color .15s; }
+.footer-links a:hover { color: #fff; }
+
+.footer-copy { max-width: 1100px; margin: auto; font-size: 12px; color: #475569; text-align: center; }
+
+/* ─── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; padding: 60px 24px 40px; gap: 40px; }
+  .hero h1 { font-size: 38px; }
+  #contacto .inner { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  header { padding: 0 20px; }
+  nav { display: none; }
+  .ham { display: flex; }
+  .hero { padding: 50px 20px 40px; }
+  .hero h1 { font-size: 32px; }
+  .section { padding: 60px 20px; }
+  #servicios, #modelo, #testimonios, #contacto { padding: 60px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .clients { padding: 24px 20px; }
+  .footer-inner { flex-direction: column; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <div class="mark">BKC</div>
-      <div>
-        <div style="font-weight:700">BKC Business Solutions</div>
-        <div class="small muted">Business Key Core</div>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="#">
+    <div class="logo-mark">BKC</div>
+    <span class="logo-name">BKC Business Solutions</span>
+  </a>
+
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#modelo">Modelo</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#testimonios">Casos</a>
+    <a class="btn-primary" href="#contacto">Agendar Cita</a>
+  </nav>
+
+  <button class="ham" id="ham" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#servicios" onclick="closeNav()">Servicios</a>
+  <a href="#modelo" onclick="closeNav()">Modelo</a>
+  <a href="#equipo" onclick="closeNav()">Equipo</a>
+  <a href="#testimonios" onclick="closeNav()">Casos</a>
+  <a class="btn-primary" href="#contacto" onclick="closeNav()">Agendar cita</a>
+</div>
+
+<!-- HERO -->
+<section style="background: var(--white);">
+  <div class="hero">
+    <div class="hero-left">
+      <span class="hero-badge">BPO · Cobranzas · Telecom</span>
+      <h1>Transformamos gestión en <em>resultados reales</em></h1>
+      <p>Integramos operación, analítica y tecnología para maximizar recuperación, contacto efectivo y performance del negocio.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contacto" style="padding:12px 28px;font-size:15px;">Agendar una cita</a>
+        <a class="btn-secondary" href="#servicios">
+          Ver servicios
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
-    <nav>
-      <a href="#services">Servicios</a>
-      <a href="#about">Nosotros</a>
-      <a href="#contact">Contacto</a>
-      <a class="btn" href="#contact">Contáctanos</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div>
-        <div class="card">
-          <h1>Conectamos personas, impulsamos resultados</h1>
-          <p>En <strong>BKC Business Solutions</strong> somos expertos en Contact Center, cobranzas, ventas y atención al cliente, ofreciendo soluciones personalizadas para tu empresa.</p>
-          <div style="display:flex;gap:12px;">
-            <a class="btn" href="mailto:administracion@bkcsolution.com?subject=Solicitud de información&body=Hola, quiero información sobre sus servicios.">Solicitar información</a>
-            <a class="btn" style="background:transparent;border:1px solid var(--accent);color:var(--accent)" href="#about">Conócenos</a>
+    <div class="hero-card">
+      <p class="hero-card-label">Resultados promedio por cliente</p>
+      <div class="metric-row">
+        <div class="metric-item">
+          <div class="metric-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" color="#0d9488"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div>
+            <div class="metric-num">+40%</div>
+            <div class="metric-desc">Recuperación de cartera</div>
+            <div class="metric-bar"><div class="metric-fill" style="width:80%;animation-duration:1s;"></div></div>
+          </div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" color="#0d9488"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3-8.59A2 2 0 0 1 3.14 1.5h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="metric-num">+60%</div>
+            <div class="metric-desc">Contacto efectivo</div>
+            <div class="metric-bar"><div class="metric-fill" style="width:90%;animation-duration:1.2s;"></div></div>
+          </div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" color="#0d9488"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+          </div>
+          <div>
+            <div class="metric-num">-25%</div>
+            <div class="metric-desc">Mora temprana</div>
+            <div class="metric-bar"><div class="metric-fill" style="width:65%;animation-duration:1.4s;"></div></div>
           </div>
         </div>
       </div>
-      <aside>
-        <div class="card">
-          <h3>Por qué elegirnos</h3>
-          <ul class="muted" style="padding-left:20px;">
-            <li>Equipo altamente capacitado</li>
-            <li>Infraestructura moderna y segura</li>
-            <li>Foco en resultados y satisfacción del cliente</li>
-          </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<div class="clients">
+  <div class="clients-inner">
+    <span class="clients-label">Operamos con</span>
+    <div class="clients-logos">
+      <span class="client-logo">CLARO</span>
+      <span class="client-logo">MOVISTAR</span>
+      <span class="client-logo">ENTEL</span>
+      <span class="client-logo">INTERBANK</span>
+      <span class="client-logo">MIBANCO</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="inner">
+    <span class="section-tag">Servicios</span>
+    <h2 class="section-title">Soluciones para cada etapa del cliente</h2>
+    <p class="section-sub">Diseñadas con tecnología, experiencia operativa y analítica avanzada para maximizar resultados en cada interacción.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
-      </aside>
-    </section>
-
-    <section class="services" id="services">
-      <div class="service">
-        <h3>Gestión de Cobranzas</h3>
-        <p class="muted">Estrategias efectivas de recuperación para carteras castigadas o vigentes.</p>
+        <h3>Cobranzas</h3>
+        <p>Estrategias con scoring, segmentación inteligente y gestión multicanal para maximizar recuperación de cartera.</p>
       </div>
-      <div class="service">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>Retenciones</h3>
+        <p>Reducción de churn mediante modelos predictivos que anticipan el riesgo de fuga antes de que ocurra.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
         <h3>Atención al Cliente</h3>
-        <p class="muted">Canales omnicanal que garantizan la mejor experiencia en cada contacto.</p>
-      </div>
-      <div class="service">
-        <h3>Televentas y Retención</h3>
-        <p class="muted">Incrementa tus ingresos y fideliza clientes con nuestros equipos comerciales.</p>
-      </div>
-    </section>
-
-    <section class="grid-2" id="about">
-      <div class="card">
-        <h2>Sobre Nosotros</h2>
-        <p class="muted">BKC Business Solutions es una empresa peruana especializada en servicios de Contact Center. Ofrecemos soluciones integrales para optimizar la comunicación, incrementar la productividad y fortalecer el vínculo con tus clientes.</p>
-        <p class="muted">Nos enfocamos en la innovación y la calidad, adaptando nuestros procesos a las necesidades de cada sector.</p>
+        <p>Gestión omnicanal centrada en experiencia con KPIs medibles y satisfacción garantizada.</p>
       </div>
 
-      <div class="card" id="contact">
-        <h2>Contáctanos</h2>
-        <p class="muted">Déjanos tus datos y uno de nuestros asesores se comunicará contigo.</p>
-        <form onsubmit="event.preventDefault();submitForm()">
-          <div style="margin-bottom:8px"><input id="name" placeholder="Nombre" required></div>
-          <div style="margin-bottom:8px"><input id="email" placeholder="Correo" type="email" required></div>
-          <div style="margin-bottom:8px"><textarea id="msg" rows="4" placeholder="Mensaje"></textarea></div>
-          <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" type="submit">Enviar</button></div>
-        </form>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3>Telecom BPO</h3>
+        <p>Gestión especializada para cuentas como Claro y Movistar bajo KPIs exigentes de industria.</p>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <div>© <span id="year"></span> BKC Business Solutions</div>
-    <div class="muted small">The Future of Contact</div>
-  </footer>
+<!-- MODELO OPERATIVO -->
+<section id="modelo">
+  <div class="inner">
+    <span class="section-tag">Modelo Operativo</span>
+    <h2 class="section-title" style="color:#fff;">Donde generamos el valor real</h2>
+    <p class="section-sub">Cada capa del modelo está diseñada para trabajar de forma integrada, garantizando eficiencia y resultados desde el día uno.</p>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    function submitForm(){
-      const data = {
-        name:document.getElementById('name').value,
-        email:document.getElementById('email').value,
-        msg:document.getElementById('msg').value
-      };
-      console.log('Formulario enviado (simulado):', data);
-      alert('Gracias por contactarnos. Pronto nos comunicaremos contigo.');
-    }
-  </script>
+    <div class="modelo-grid">
+      <div class="modelo-item">
+        <p class="modelo-num">01</p>
+        <h3>Supervisión Senior</h3>
+        <p>Lectura de KPIs en tiempo real, Excel avanzado y toma de decisiones operativas.</p>
+      </div>
+      <div class="modelo-item">
+        <p class="modelo-num">02</p>
+        <h3>Analistas de Cartera</h3>
+        <p>Segmentación y priorización inteligente de cartera por riesgo y potencial.</p>
+      </div>
+      <div class="modelo-item">
+        <p class="modelo-num">03</p>
+        <h3>Canales Digitales</h3>
+        <p>WhatsApp Business, bots conversacionales y automatización de contacto.</p>
+      </div>
+      <div class="modelo-item">
+        <p class="modelo-num">04</p>
+        <h3>Desarrollo & Automación</h3>
+        <p>Mejoras continuas y automatización de procesos repetitivos para mayor eficiencia.</p>
+      </div>
+      <div class="modelo-item">
+        <p class="modelo-num">05</p>
+        <h3>BI & Analytics</h3>
+        <p>Dashboards y análisis por tipo de negocio para decisiones basadas en datos.</p>
+      </div>
+      <div class="modelo-item">
+        <p class="modelo-num">06</p>
+        <h3>Autogestión Digital</h3>
+        <p>Plataformas que empoderan al cliente para resolver sin necesidad de agente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="section" id="equipo">
+  <span class="section-tag">Equipo</span>
+  <h2 class="section-title">Talento alineado al negocio</h2>
+  <p class="section-sub">Seleccionamos perfiles de alto nivel y los capacitamos con tecnología y metodología propia.</p>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div>
+        <h3>Asesores Especializados</h3>
+        <p>Perfiles calibrados según tipo de gestión: cobranza, retención o atención, con formación continua.</p>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div>
+        <h3>Selección de Alto Nivel</h3>
+        <p>Filtros rigurosos que garantizan el mejor talento disponible en el mercado para cada rol.</p>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <h3>Tecnología de Scoring</h3>
+        <p>Algoritmos propios que priorizan el contacto por probabilidad de éxito y valor de recuperación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="inner">
+    <span class="section-tag">Resultados</span>
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    <p class="section-sub">Empresas líderes en Perú confían en BKC para mejorar sus indicadores de cobranza y atención.</p>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-quote">Implementamos BKC en nuestra cartera de mora temprana y en 90 días ya veíamos una mejora sostenida en recuperación. El equipo entendió nuestro negocio desde el primer día.</p>
+        <div class="testi-author">
+          <div class="testi-initials">JR</div>
+          <div>
+            <p class="testi-name">Jefe de Riesgo</p>
+            <p class="testi-role">Entidad financiera, Lima</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <p class="testi-quote">La combinación de canales digitales con gestión humana marcó la diferencia. Subimos el contacto efectivo en más del 55% y sin aumentar el equipo operativo.</p>
+        <div class="testi-author">
+          <div class="testi-initials">MV</div>
+          <div>
+            <p class="testi-name">Gerente de Operaciones</p>
+            <p class="testi-role">Empresa Telecom, nacional</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <p class="testi-quote">El modelo de supervisión senior que aplican es lo que realmente diferencia a BKC. Las decisiones se toman con datos, no con intuición, y eso se nota en los KPIs.</p>
+        <div class="testi-author">
+          <div class="testi-initials">CA</div>
+          <div>
+            <p class="testi-name">Director Comercial</p>
+            <p class="testi-role">Grupo de servicios, Lima</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="inner">
+    <div class="contact-info">
+      <span class="section-tag">Contacto</span>
+      <h2 class="section-title">Hablemos de tu negocio</h2>
+      <p>Cuéntanos el reto que enfrentas y en menos de 24 horas te presentamos una propuesta inicial adaptada a tu operación.</p>
+
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3-8.59A2 2 0 0 1 3.14 1.5h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <span>+51 999 000 000</span>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <span>contacto@bkcbusiness.pe</span>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <span>San Isidro, Lima — Perú</span>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <p style="font-size:17px;font-weight:600;color:var(--navy);margin-bottom:24px;">Agendar una cita</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Empresa</label>
+          <input type="text" placeholder="Nombre de empresa">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Correo corporativo</label>
+        <input type="email" placeholder="correo@empresa.com">
+      </div>
+
+      <div class="form-group">
+        <label>Servicio de interés</label>
+        <select>
+          <option value="" disabled selected>Seleccionar...</option>
+          <option>Cobranzas</option>
+          <option>Retenciones</option>
+          <option>Atención al Cliente</option>
+          <option>Telecom BPO</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Cuéntanos tu reto</label>
+        <textarea rows="4" placeholder="¿Qué problema necesitas resolver?"></textarea>
+      </div>
+
+      <button class="btn-submit" type="button">Enviar solicitud →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-mark">BKC</div>
+        <span class="logo-name">BKC Business Solutions</span>
+      </div>
+      <p class="footer-tagline">Transformamos gestión en resultados medibles.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Servicios</h4>
+      <a href="#servicios">Cobranzas</a>
+      <a href="#servicios">Retenciones</a>
+      <a href="#servicios">Atención al Cliente</a>
+      <a href="#servicios">Telecom BPO</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Empresa</h4>
+      <a href="#modelo">Modelo Operativo</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#testimonios">Casos de éxito</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 BKC Business Solutions — Lima, Perú</p>
+</footer>
+
+<script>
+  const ham = document.getElementById('ham');
+  const nav = document.getElementById('mobile-nav');
+  ham.addEventListener('click', () => nav.classList.toggle('open'));
+  function closeNav() { nav.classList.remove('open'); }
+</script>
+
 </body>
 </html>
