@@ -27,7 +27,33 @@
 
 body { background: var(--bg); color: var(--navy); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-/* ─── HEADER ─────────────────────────────────── */
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--navy);
+  color: var(--white);
+  text-decoration: none;
+  transform: translateY(-150%);
+  transition: transform .2s;
+}
+.skip-link:focus { transform: translateY(0); }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(13,148,136,0.35);
+  outline-offset: 3px;
+}
+
+section[id] { scroll-margin-top: 68px; }
+
+/* --- HEADER ----------------------------------- */
 header {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,0.92);
@@ -81,7 +107,7 @@ nav a:hover { color: var(--teal); }
 .mobile-nav a { font-size: 16px; font-weight: 500; color: var(--navy); text-decoration: none; }
 .mobile-nav.open { display: flex; }
 
-/* ─── HERO ───────────────────────────────────── */
+/* --- HERO ------------------------------------- */
 .hero {
   padding: 100px 40px 80px;
   max-width: 1100px;
@@ -212,7 +238,7 @@ nav a:hover { color: var(--teal); }
 }
 @keyframes grow { from { width: 0; } }
 
-/* ─── CLIENTES ───────────────────────────────── */
+/* --- CLIENTES --------------------------------- */
 .clients {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -255,7 +281,7 @@ nav a:hover { color: var(--teal); }
 }
 .client-logo:hover { opacity: 1; }
 
-/* ─── SECTION BASE ───────────────────────────── */
+/* --- SECTION BASE ----------------------------- */
 .section {
   padding: 90px 40px;
   max-width: 1100px;
@@ -289,7 +315,7 @@ nav a:hover { color: var(--teal); }
   margin-bottom: 48px;
 }
 
-/* ─── SERVICIOS ──────────────────────────────── */
+/* --- SERVICIOS -------------------------------- */
 #servicios { background: var(--white); padding: 90px 40px; }
 #servicios .inner { max-width: 1100px; margin: auto; }
 
@@ -350,7 +376,7 @@ nav a:hover { color: var(--teal); }
   line-height: 1.6;
 }
 
-/* ─── MODELO ─────────────────────────────────── */
+/* --- MODELO ----------------------------------- */
 #modelo { background: var(--navy); padding: 90px 40px; }
 #modelo .inner { max-width: 1100px; margin: auto; }
 #modelo .section-title { color: #fff; }
@@ -395,7 +421,7 @@ nav a:hover { color: var(--teal); }
   line-height: 1.6;
 }
 
-/* ─── EQUIPO ─────────────────────────────────── */
+/* --- EQUIPO ----------------------------------- */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -439,7 +465,7 @@ nav a:hover { color: var(--teal); }
   line-height: 1.6;
 }
 
-/* ─── TESTIMONIOS ────────────────────────────── */
+/* --- TESTIMONIOS ------------------------------ */
 #testimonios { background: var(--white); padding: 90px 40px; }
 #testimonios .inner { max-width: 1100px; margin: auto; }
 
@@ -495,7 +521,7 @@ nav a:hover { color: var(--teal); }
   color: var(--muted);
 }
 
-/* ─── CONTACTO ───────────────────────────────── */
+/* --- CONTACTO --------------------------------- */
 #contacto { background: var(--bg); padding: 90px 40px; }
 #contacto .inner {
   max-width: 1100px;
@@ -528,10 +554,13 @@ nav a:hover { color: var(--teal); }
   flex-shrink: 0;
 }
 
-.contact-detail span {
+.contact-detail span,
+.contact-detail a {
   font-size: 14px;
   color: var(--slate);
 }
+.contact-detail a { text-decoration: none; }
+.contact-detail a:hover { color: var(--teal-d); text-decoration: underline; }
 
 /* FORM */
 .contact-form {
@@ -598,7 +627,7 @@ nav a:hover { color: var(--teal); }
 .btn-submit:hover { background: var(--teal-d); transform: translateY(-1px); }
 .btn-submit:active { transform: translateY(0); }
 
-/* ─── FOOTER ─────────────────────────────────── */
+/* --- FOOTER ----------------------------------- */
 footer {
   background: var(--navy);
   padding: 48px 40px 32px;
@@ -628,7 +657,7 @@ footer {
 
 .footer-copy { max-width: 1100px; margin: auto; font-size: 12px; color: #475569; text-align: center; }
 
-/* ─── RESPONSIVE ─────────────────────────────── */
+/* --- RESPONSIVE ------------------------------- */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; padding: 60px 24px 40px; gap: 40px; }
   .hero h1 { font-size: 38px; }
@@ -647,13 +676,24 @@ footer {
   .clients { padding: 24px 20px; }
   .footer-inner { flex-direction: column; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  :root { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
 <!-- HEADER -->
 <header>
-  <a class="logo" href="#">
+  <a class="logo" href="#contenido" aria-label="BKC Business Solutions, inicio">
     <div class="logo-mark">BKC</div>
     <span class="logo-name">BKC Business Solutions</span>
   </a>
@@ -666,12 +706,12 @@ footer {
     <a class="btn-primary" href="#contacto">Agendar Cita</a>
   </nav>
 
-  <button class="ham" id="ham" aria-label="Menú">
-    <span></span><span></span><span></span>
+  <button class="ham" id="ham" type="button" aria-label="Abrir menú" aria-controls="mobile-nav" aria-expanded="false">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
   </button>
 </header>
 
-<div class="mobile-nav" id="mobile-nav">
+<div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Navegación móvil" aria-hidden="true">
   <a href="#servicios" onclick="closeNav()">Servicios</a>
   <a href="#modelo" onclick="closeNav()">Modelo</a>
   <a href="#equipo" onclick="closeNav()">Equipo</a>
@@ -680,7 +720,7 @@ footer {
 </div>
 
 <!-- HERO -->
-<section style="background: var(--white);">
+<section id="contenido" style="background: var(--white);">
   <div class="hero">
     <div class="hero-left">
       <span class="hero-badge">BPO · Cobranzas · Telecom</span>
@@ -818,7 +858,7 @@ footer {
       </div>
       <div class="modelo-item">
         <p class="modelo-num">04</p>
-        <h3>Desarrollo & Automación</h3>
+        <h3>Desarrollo & Automatización</h3>
         <p>Mejoras continuas y automatización de procesos repetitivos para mayor eficiencia.</p>
       </div>
       <div class="modelo-item">
@@ -930,14 +970,14 @@ footer {
         <div class="contact-icon">
           <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3-8.59A2 2 0 0 1 3.14 1.5h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </div>
-        <span>+51 912 911 644</span>
+        <a href="tel:+51912911644">+51 912 911 644</a>
       </div>
 
       <div class="contact-detail">
         <div class="contact-icon">
           <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#0d9488" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
-        <span>contacto@bkcsolution.com</span>
+        <a href="mailto:contacto@bkcsolution.com">contacto@bkcsolution.com</a>
       </div>
 
       <div class="contact-detail">
@@ -949,41 +989,49 @@ footer {
     </div>
 
     <div class="contact-form">
-      <p style="font-size:17px;font-weight:600;color:var(--navy);margin-bottom:24px;">Agendar una cita</p>
+      <h3 style="font-size:17px;font-weight:600;color:var(--navy);margin-bottom:24px;">Agendar una cita</h3>
+
+      <form action="https://formsubmit.co/administracion@bkcsolution.com" method="POST">
+
+      <input type="hidden" name="_subject" value="Nueva solicitud desde la web BKC">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
 
       <div class="form-row">
         <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" placeholder="Tu nombre">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" name="nombre" placeholder="Tu nombre" autocomplete="name" required>
         </div>
+
         <div class="form-group">
-          <label>Empresa</label>
-          <input type="text" placeholder="Nombre de empresa">
+          <label for="empresa">Empresa</label>
+          <input id="empresa" type="text" name="empresa" placeholder="Nombre de empresa" autocomplete="organization" required>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Correo corporativo</label>
-        <input type="email" placeholder="correo@empresa.com">
+        <label for="email">Correo corporativo</label>
+        <input id="email" type="email" name="email" placeholder="correo@empresa.com" autocomplete="email" required>
       </div>
 
       <div class="form-group">
-        <label>Servicio de interés</label>
-        <select>
+        <label for="servicio">Servicio de interés</label>
+        <select id="servicio" name="servicio" required>
           <option value="" disabled selected>Seleccionar...</option>
-          <option>Cobranzas</option>
-          <option>Retenciones</option>
-          <option>Atención al Cliente</option>
-          <option>Telecom BPO</option>
+          <option value="Cobranzas">Cobranzas</option>
+          <option value="Ventas">Ventas</option>
+          <option value="Atención al Cliente">Atención al Cliente</option>
+          <option value="Retenciones y Fidelización">Retenciones</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label>Cuéntanos tu reto</label>
-        <textarea rows="4" placeholder="¿Qué problema necesitas resolver?"></textarea>
+        <label for="mensaje">Cuéntanos tu reto</label>
+        <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿Qué problema necesitas resolver?" required></textarea>
       </div>
 
-      <button class="btn-submit" type="button">Enviar solicitud →</button>
+        <button class="btn-submit" type="submit">Enviar solicitud →</button>
+      </form>
     </div>
   </div>
 </section>
@@ -1021,8 +1069,30 @@ footer {
 <script>
   const ham = document.getElementById('ham');
   const nav = document.getElementById('mobile-nav');
-  ham.addEventListener('click', () => nav.classList.toggle('open'));
-  function closeNav() { nav.classList.remove('open'); }
+
+  function setNavState(isOpen) {
+    nav.classList.toggle('open', isOpen);
+    nav.setAttribute('aria-hidden', String(!isOpen));
+    ham.setAttribute('aria-expanded', String(isOpen));
+    ham.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+  }
+
+  ham.addEventListener('click', () => {
+    setNavState(!nav.classList.contains('open'));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('open')) {
+      setNavState(false);
+      ham.focus();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) setNavState(false);
+  });
+
+  function closeNav() { setNavState(false); }
 </script>
 
 </body>
