@@ -1,0 +1,5 @@
+/acuerdos/config.php
+/acuerdos/storage/*
+!/acuerdos/storage/.gitkeep
+/.env
+
