@@ -1,0 +1,23 @@
+{
+  "fecha_documento": "2026-08-20",
+  "nombre_completo": "CLIENTE DEMOSTRACIÓN",
+  "dni": "00000000",
+  "telefono": "999999999",
+  "correo": "prueba@example.invalid",
+  "direccion": "DIRECCIÓN DE PRUEBA",
+  "distrito": "DISTRITO DEMO",
+  "departamento": "LIMA",
+  "numero_operacion": "OP-DEMO-001",
+  "producto": "TARJETA",
+  "deuda_total": 1000.00,
+  "tipo_acuerdo": "CANCELACION",
+  "monto_acordado": 435.00,
+  "monto_inicial": 0,
+  "cuotas": [
+    {"fecha": "2026-09-21", "monto": 87.00},
+    {"fecha": "2026-10-21", "monto": 87.00},
+    {"fecha": "2026-11-21", "monto": 87.00},
+    {"fecha": "2026-12-21", "monto": 87.00},
+    {"fecha": "2027-01-21", "monto": 87.00}
+  ]
+}

@@ -9,5 +9,7 @@ return [
     'APP_URL' => 'https://bkcsolution.com/acuerdos',
     // Genere un valor aleatorio de al menos 32 caracteres y elimínelo tras el setup.
     'SETUP_TOKEN' => 'CAMBIAR_POR_TOKEN_ALEATORIO_LARGO',
+    // Token independiente para el sincronizador local SQL Server -> portal.
+    'SYNC_TOKEN' => 'CAMBIAR_POR_OTRO_TOKEN_ALEATORIO_LARGO',
 ];
 
