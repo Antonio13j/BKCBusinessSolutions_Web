@@ -6,8 +6,10 @@ from datetime import date, datetime
 import pyodbc
 
 SQL="""SELECT documento,nombre_titular,operacion,deuda_total,monto_capital,moneda,
- asignacion,periodo_archivo,fecha_carga,origen_entidad,producto,direccion,distrito,
- provincia,departamento FROM rpt.consolidado c
+ asignacion,periodo_archivo,fecha_carga,fecha_castigo,origen_entidad,producto,direccion,distrito,
+ provincia,departamento,edad,ingresos AS situacion_laboral,ultimo_sueldo,ruc_trabajo,
+ nombre_empresa,deuda_sbs,perfil_sbs,bienes,departamento AS departamento_perfil
+ FROM rpt.consolidado c
  WHERE asignacion=? AND periodo_archivo=(SELECT MAX(periodo_archivo) FROM dbo.consolidado WHERE asignacion=?)
  AND (? IS NULL OR documento=?) ORDER BY documento,operacion"""
 
