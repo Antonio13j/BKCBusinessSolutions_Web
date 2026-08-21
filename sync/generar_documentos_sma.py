@@ -62,8 +62,10 @@ def generar_acuerdo(template: Path, output: Path, data: dict) -> Path:
     if not installments:
         raise ValueError("El acuerdo debe contener al menos una cuota")
     agreed = round(float(data["monto_acordado"]), 2)
-    if round(sum(float(x["monto"]) for x in installments) + float(data.get("monto_inicial", 0)), 2) != agreed:
+    if round(sum(float(x["monto"]) for x in installments), 2) != agreed:
         raise ValueError("Las cuotas no suman el monto acordado")
+    if round(float(installments[0]["monto"]), 2) != round(float(data.get("monto_inicial", 0)), 2):
+        raise ValueError("La inicial debe coincidir con la cuota 1")
     doc = Document(template)
     p = doc.paragraphs
     set_run(p[9], 5, fecha_larga(data["fecha_documento"]))
@@ -125,4 +127,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

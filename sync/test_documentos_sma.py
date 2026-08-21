@@ -21,6 +21,18 @@ class DocumentosSmaTest(unittest.TestCase):
             self.assertEqual([r.cells[0].text for r in doc.tables[1].rows[1:]],['01','02','03','04','05'])
             self.assertEqual(doc.tables[1].rows[-1].cells[2].text,'S/ 87.00')
 
+    def test_inicial_es_cuota_uno(self):
+        data=dict(self.data)
+        data.update(monto_acordado=1000,monto_inicial=300,cuotas=[
+            {'fecha':'2026-09-21','monto':300},
+            {'fecha':'2026-10-21','monto':350},
+            {'fecha':'2026-11-21','monto':350},
+        ])
+        with tempfile.TemporaryDirectory() as folder:
+            result=generar_acuerdo(TEMPLATES/'Acuerdo_de_Pago.docx',Path(folder),data)
+            doc=Document(result)
+            self.assertEqual([r.cells[2].text for r in doc.tables[1].rows[1:]],['S/ 300.00','S/ 350.00','S/ 350.00'])
+
     def test_cesion_conserva_fecha_legal(self):
         with tempfile.TemporaryDirectory() as folder:
             result=generar_cesion(TEMPLATES/'Cesion_Derechos.docx',Path(folder),self.data)

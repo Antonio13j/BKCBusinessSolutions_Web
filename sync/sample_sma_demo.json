@@ -12,7 +12,7 @@
   "deuda_total": 1000.00,
   "tipo_acuerdo": "CANCELACION",
   "monto_acordado": 435.00,
-  "monto_inicial": 0,
+  "monto_inicial": 87.00,
   "cuotas": [
     {"fecha": "2026-09-21", "monto": 87.00},
     {"fecha": "2026-10-21", "monto": 87.00},
