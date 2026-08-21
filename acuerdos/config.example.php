@@ -7,5 +7,7 @@ return [
     'DB_PASSWORD' => 'CAMBIAR_EN_HOSTINGER',
     'APP_ENV' => 'production',
     'APP_URL' => 'https://bkcsolution.com/acuerdos',
+    // Genere un valor aleatorio de al menos 32 caracteres y elimínelo tras el setup.
+    'SETUP_TOKEN' => 'CAMBIAR_POR_TOKEN_ALEATORIO_LARGO',
 ];
 
