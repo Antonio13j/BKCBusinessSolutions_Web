@@ -2,7 +2,10 @@
 from __future__ import annotations
 import argparse, base64, json, os, tempfile, urllib.request
 from pathlib import Path
-from sync.generar_documentos_sma import generar_acuerdo, generar_cesion, convert_pdf
+try:
+    from sync.generar_documentos_sma import generar_acuerdo, generar_cesion, convert_pdf
+except ModuleNotFoundError:
+    from generar_documentos_sma import generar_acuerdo, generar_cesion, convert_pdf
 
 def request(url,token,data=None):
     body=json.dumps(data).encode() if data is not None else None
