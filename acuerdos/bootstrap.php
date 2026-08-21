@@ -29,6 +29,7 @@ try {
 
 function e(?string $value): string { return htmlspecialchars($value ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }
 function url(string $path=''): string { global $config; return rtrim($config['APP_URL'],'/') . '/' . ltrim($path,'/'); }
+function asset_url(string $path): string { $file=__DIR__.DIRECTORY_SEPARATOR.str_replace('/',DIRECTORY_SEPARATOR,$path); return url($path).'?v='.(is_file($file)?filemtime($file):'1'); }
 function csrf(): string { if (empty($_SESSION['csrf'])) $_SESSION['csrf']=bin2hex(random_bytes(32)); return $_SESSION['csrf']; }
 function verify_csrf(): void { if (!hash_equals($_SESSION['csrf'] ?? '', $_POST['csrf'] ?? '')) { http_response_code(419); exit('Solicitud expirada.'); } }
 function user(): ?array { return !empty($_SESSION['authenticated']) ? ['id'=>(int)$_SESSION['user_id'],'username'=>$_SESSION['username'],'role'=>$_SESSION['role']] : null; }
