@@ -3,4 +3,6 @@
 !/acuerdos/storage/.gitkeep
 !/acuerdos/storage/.htaccess
 /.env
+__pycache__/
+*.pyc
 
