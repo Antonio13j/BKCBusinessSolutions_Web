@@ -29,7 +29,7 @@ def main():
                 pdf=convert_pdf(docx,output,a.soffice);payload={'documento_id':job['documento_id'],'pdf_base64':base64.b64encode(pdf.read_bytes()).decode()};request(a.endpoint,token,payload)
             print(f"Documento {job['documento_id']} generado")
         except Exception as exc:
-            request(a.endpoint,token,{'documento_id':job['documento_id'],'generation_error':type(exc).__name__});print(f"Documento {job['documento_id']} marcado con error: {type(exc).__name__}")
+            request(a.endpoint,token,{'documento_id':job['documento_id'],'generation_error':type(exc).__name__});print(f"Documento {job['documento_id']} marcado con error: {type(exc).__name__}: {exc}")
         processed+=1
     print(f"Proceso completo: {processed} documento(s)")
 

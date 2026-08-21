@@ -99,7 +99,9 @@ def generar_acuerdo(template: Path, output: Path, data: dict) -> Path:
 
 
 def convert_pdf(docx: Path, output: Path, soffice: str) -> Path:
-    subprocess.run([soffice, "--headless", "--convert-to", "pdf", "--outdir", str(output), str(docx)], check=True, capture_output=True, text=True, timeout=120)
+    profile = output / ".libreoffice-profile"
+    profile.mkdir(exist_ok=True)
+    subprocess.run([soffice, f"-env:UserInstallation={profile.resolve().as_uri()}", "--headless", "--convert-to", "pdf", "--outdir", str(output), str(docx)], check=True, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
     generated = output / f"{docx.stem}.pdf"
     if not generated.is_file() or generated.stat().st_size == 0:
         raise RuntimeError(f"LibreOffice no generó {generated.name}")
