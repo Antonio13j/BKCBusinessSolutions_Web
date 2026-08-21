@@ -1,0 +1,14 @@
+SET NAMES utf8mb4;
+ALTER TABLE documentos DROP FOREIGN KEY fk_documento_acuerdo;
+ALTER TABLE documentos DROP FOREIGN KEY fk_documento_usuario;
+ALTER TABLE documentos DROP INDEX uq_documento_acuerdo_tipo;
+ALTER TABLE documentos MODIFY acuerdo_id BIGINT UNSIGNED NULL;
+ALTER TABLE documentos MODIFY solicitado_por BIGINT UNSIGNED NULL;
+ALTER TABLE documentos ADD COLUMN cliente_id BIGINT UNSIGNED NULL AFTER acuerdo_id;
+ALTER TABLE documentos ADD COLUMN operacion_id BIGINT UNSIGNED NULL AFTER cliente_id;
+ALTER TABLE documentos ADD CONSTRAINT fk_documento_acuerdo FOREIGN KEY(acuerdo_id) REFERENCES acuerdos(id) ON DELETE CASCADE;
+ALTER TABLE documentos ADD CONSTRAINT fk_documento_cliente FOREIGN KEY(cliente_id) REFERENCES clientes(id) ON DELETE CASCADE;
+ALTER TABLE documentos ADD CONSTRAINT fk_documento_operacion FOREIGN KEY(operacion_id) REFERENCES operaciones(id) ON DELETE CASCADE;
+ALTER TABLE documentos ADD CONSTRAINT fk_documento_usuario FOREIGN KEY(solicitado_por) REFERENCES usuarios(id) ON DELETE SET NULL;
+CREATE UNIQUE INDEX uq_documento_acuerdo_tipo ON documentos(acuerdo_id,tipo);
+CREATE UNIQUE INDEX uq_documento_operacion_tipo ON documentos(operacion_id,tipo);

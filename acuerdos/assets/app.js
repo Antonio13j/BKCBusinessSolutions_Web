@@ -3,6 +3,7 @@ document.querySelectorAll('[data-confirm]').forEach(button=>button.addEventListe
 const agreementForm=document.getElementById('agreement-form');
 if(agreementForm){
  const amount=document.getElementById('monto-acordado'),initial=document.getElementById('monto-inicial'),count=document.getElementById('numero-cuotas'),firstDate=document.getElementById('fecha-primera'),rows=document.getElementById('installment-rows'),submit=document.getElementById('create-agreement');
+ const phone=agreementForm.elements.telefono,email=agreementForm.elements.correo;phone.required=true;email.type='text';email.required=true;email.placeholder='correo@dominio.com o -';if(!email.value)email.value='-';
  const cents=v=>Math.round((Number(v)||0)*100),format=c=>`S/ ${(c/100).toFixed(2)}`;
  const addMonths=(iso,n)=>{const [y,m,d]=iso.split('-').map(Number),date=new Date(Date.UTC(y,m-1+n,1)),last=new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth()+1,0)).getUTCDate();return `${date.getUTCFullYear()}-${String(date.getUTCMonth()+1).padStart(2,'0')}-${String(Math.min(d,last)).padStart(2,'0')}`};
  function totals(){const agreed=cents(amount.value),distributed=[...rows.querySelectorAll('.quota-amount')].reduce((s,i)=>s+cents(i.value),0),diff=agreed-distributed;document.getElementById('total-agreed').textContent=format(agreed);document.getElementById('total-distributed').textContent=format(distributed);const el=document.getElementById('total-difference');el.textContent=format(diff);el.classList.toggle('invalid',diff!==0);submit.disabled=agreed<=0||diff!==0;}
