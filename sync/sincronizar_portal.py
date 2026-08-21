@@ -25,7 +25,7 @@ def main():
     token=os.environ.get('BKC_PORTAL_SYNC_TOKEN','');
     if len(token)<32:raise SystemExit('Falta BKC_PORTAL_SYNC_TOKEN (32+ caracteres)')
     for start in range(0,len(rows),200):
-        chunk=rows[start:start+200];payload=json.dumps({'asignacion':a.asignacion,'periodo_archivo':period,'batch_id':batch,'rows':chunk,'final':start+200>=len(rows)},ensure_ascii=False,default=str).encode();req=urllib.request.Request(a.endpoint,data=payload,headers={'Content-Type':'application/json','Authorization':f'Bearer {token}'},method='POST')
+        chunk=rows[start:start+200];payload=json.dumps({'asignacion':a.asignacion,'periodo_archivo':period,'batch_id':batch,'rows':chunk,'final':start+200>=len(rows),'full_snapshot':a.documento is None},ensure_ascii=False,default=str).encode();req=urllib.request.Request(a.endpoint,data=payload,headers={'Content-Type':'application/json','Authorization':f'Bearer {token}'},method='POST')
         with urllib.request.urlopen(req,timeout=60) as response:
             result=json.load(response)
         if not result.get('ok'):raise RuntimeError(result)
