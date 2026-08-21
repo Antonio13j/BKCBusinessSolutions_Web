@@ -1,0 +1,9 @@
+Options -Indexes
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+<FilesMatch "^(config\.php|bootstrap\.php|layout\.php)$">
+  Require all denied
+</FilesMatch>
+
