@@ -106,9 +106,15 @@
       .whatsapp-float{left:auto;right:22px}
     }
     @media(max-width:640px){
+      html,body{max-width:100%;overflow-x:clip}
+      .site-header{width:100%;max-width:100vw}
       .brand img{width:64px;height:64px;max-height:none}
       .footer-logo{width:64px;height:64px;max-height:none}
       .about-heading:after{width:132px;margin-top:26px;opacity:.34}
+      .talent-grid,.talent-copy,.application-card,.application-grid,.application-grid>*{min-width:0;max-width:100%}
+      .upload-zone{min-width:0;max-width:100%;overflow:hidden}
+      .upload-zone input[type="file"]{display:block;width:100%;min-width:0;max-width:100%;font-size:12px}
+      .consent span{min-width:0;overflow-wrap:anywhere}
     }
   </style>
 </head>
